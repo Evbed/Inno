@@ -2,7 +2,7 @@ package Task06;
 
 class Auto {
 
-    private boolean fourWheelDrive;         //комплектация с полным приводом или нет
+    private boolean fourWheelDrive;          //комплектация с полным приводом или нет
     private int enginePower;                 //мощность двигателя
 
     Auto(boolean fourWheelDrive, int enginePower) {
