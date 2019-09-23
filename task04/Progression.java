@@ -6,17 +6,21 @@ import java.util.Scanner;
 
 public class Progression {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
-        int n = sc.nextInt();
-        int a = 1;          // Стартовое число
-        int d = 2;          // Знаменатель прогрессии
+        System.out.println("Введите количество чисел для прогрессии:");
+        int numberOfProgression = scanner.nextInt();
 
-        for (int i = 1; i < n; ) {
-            a = a + d;          //Для геометрической прогрессии используем а = a * d;
+        int firstNum = 1;          // Стартовое число
+        int secondNum = 2;          // Знаменатель прогрессии
+        int viewFistNum = firstNum;
+        System.out.println(viewFistNum);
+
+        for (int i = 1; i < numberOfProgression; ) {// исправить про первое число
+            firstNum = firstNum + secondNum;          //Для геометрической прогрессии используем а = a * d;
             i++;
 
-            System.out.println(a);
+            System.out.println(firstNum);
 
         }
     }

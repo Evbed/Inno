@@ -5,12 +5,15 @@ import java.util.Scanner;
 
 public class Minimum {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Программа для поиска минимального из двух чисел");
+        System.out.println("Введите первое число");
 
-        int a = sc.nextInt();
-        int b = sc.nextInt();
-        int min = a < b ? a : b;        //int min = Math.min(a, b);
-        System.out.println(min);
+        int firstNumber = scanner.nextInt();
+        System.out.println("Введите второе число");
+        int secondNumber = scanner.nextInt();
+        int minimum = firstNumber < secondNumber ? firstNumber : secondNumber;        //int min = Math.min(a, b);
+        System.out.println("Минимальное число: " + minimum);
 
     }
 

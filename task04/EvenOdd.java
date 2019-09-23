@@ -6,16 +6,36 @@ import java.util.Scanner;
 
 public class EvenOdd {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите число:");
 
-        int input = sc.nextInt();
-        String evenOrOdd = input % 2 == 0 ? "Четное" : "Нечетное";
-        String positiveOrNegative = input > 0 ? " положительное число" : " отрицательное число";
+        int input = scanner.nextInt();
+
         if (input != 0) {
-            System.out.println(evenOrOdd + positiveOrNegative);
+            if (input % 2 == 0) {
+                System.out.print("Четное ");
+            } else {
+                System.out.print("Нечетное ");
+            }
+            if (input > 0) {
+                System.out.println("положительное число");
+            } else {
+                System.out.println("отрицательное число");
+            }
         } else {
-            System.out.println("Нулевое число");
+            System.out.println("Число ноль");
         }
 
     }
+
+
+//        String evenOrOdd = input % 2 == 0 ? "Четное" : "Нечетное";
+//        String positiveOrNegative = input > 0 ? " положительное число" : " отрицательное число"; //if в if
+//        if (input != 0) {
+//            System.out.println(evenOrOdd + positiveOrNegative); //print
+//        } else {
+//            System.out.println("Нулевое число");
+//        }
+
 }
+

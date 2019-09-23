@@ -1,17 +1,22 @@
 package task04;
 
-import java.util.Scanner;
+
 
 public class MultiplicationTable {
     public static void main(String[] args) {
+        for (int i = 1; i < 11; i++) {
+            System.out.println();
+            for (int j = 1; j < 11; j++) {
+                int format = i * j;
+                if (format < 10) {
+                    System.out.print(format + "  ");
+                } else {
+                    System.out.print(format + " ");
+                }
 
-        Scanner sc = new Scanner(System.in);
 
-        int arg = sc.nextInt(); // Вводим множитель
-
-        for (int i = 1; i <= 10; i++) {
-            System.out.print(arg * i + " ");
-
+            }
         }
     }
 }
+
