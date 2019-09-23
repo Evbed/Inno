@@ -3,8 +3,8 @@ package task07;
 public enum Drink {
     PEPSI("Пепси-кола", 30) , FANTA("Фанта", 35), SPRITE("Спрайт",40);
 
-    public String title;
-    public int cost;
+    private String title;
+    private int cost;
 
     Drink(String title, int cost) {
         this.title = title;
@@ -18,9 +18,5 @@ public enum Drink {
     public int getCost() {
         return cost;
     }
-
-
-
-
 
 }
