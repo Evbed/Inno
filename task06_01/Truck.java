@@ -15,7 +15,7 @@ public class Truck implements Vehicle, Driveable {
 
     }
 
-    @Override
+
     public int numberOfWheels() {
         return 8;
     }

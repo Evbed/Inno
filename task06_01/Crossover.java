@@ -2,7 +2,7 @@ package task06_01;
 
 public class Crossover extends Car {
 
-    boolean fourWheelDrive = true;
+    private boolean fourWheelDrive = true;
 
     @Override
     public void drive() {

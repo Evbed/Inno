@@ -1,23 +1,24 @@
 package task06_01;
 
-public class Car implements Vehicle, Driveable {
+public abstract class Car implements Vehicle, Driveable {
 
-    boolean fourWheelDrive = false;
+    private boolean fourWheelDrive;
+    private int numberOfWheels;
 
     @Override
     public void drive() {
-
+        System.out.println("Я автомобиль, я еду, полноприводный - " + fourWheelDrive);
     }
 
     @Override
     public void move() {
-        System.out.println("Я автомобиль, еду по трассе");
+        System.out.println("Я автомобиль, полноприводный - " + fourWheelDrive);
 
     }
 
-    @Override
+
     public int numberOfWheels() {
-        return 4;
+        return numberOfWheels;
     }
 
 

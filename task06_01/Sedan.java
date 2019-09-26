@@ -1,17 +1,9 @@
 package task06_01;
 
-public class Crossover extends Car {
+public class Sedan extends Car {
 
-    boolean fourWheelDrive = true;
+    private boolean fourWheelDrive = false;
 
-    @Override
-    public void drive() {
-        super.drive();
-    }
 
-    @Override
-    public void move() {
-        System.out.println("Я кроссовер, могу ехать по бездорожью");
-    }
 
 }
