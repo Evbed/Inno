@@ -1,6 +1,12 @@
 package task07;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+
+
 public class VendingMachine {
+    private final static Logger logger = LoggerFactory.getLogger(VendingMachine.class);
     private String name;
     private Drink[] drinks;
 
@@ -8,6 +14,7 @@ public class VendingMachine {
         this.drinks = drinks;
         this.name = name;
     }
+
 
     public void menu() {
         for (Drink d : drinks) {
