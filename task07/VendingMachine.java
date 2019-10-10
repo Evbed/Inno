@@ -1,15 +1,7 @@
 package task07;
 
-import org.slf4j.LoggerFactory;
-
-import java.util.Scanner;
-import java.util.logging.*;
-
 
 public class VendingMachine {
-
-
-    Scanner scanner = new Scanner(System.in);
 
     private String name;
     private Drink[] drinks;

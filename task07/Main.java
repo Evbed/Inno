@@ -45,6 +45,7 @@ public class Main {
                     return;
 
                 default:
+                    logger.warning("Выбрана несуществующая команда!");
                     System.out.println("Несуществующая команда");
                     break;
             }
