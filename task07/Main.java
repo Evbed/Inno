@@ -5,64 +5,52 @@ import java.util.Scanner;
 import java.util.logging.*;
 
 import static task07.Drink.*;
+import static task07.VendingMachine.balance;
+import static task07.VendingMachine.getBalance;
 
 
 public class Main {
 
-    public static final Logger logger = Logger.getLogger(Main.class.getName());
+    static final Logger logger = Logger.getLogger(Main.class.getName());
 
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
         VendingMachine automat1 = new VendingMachine("Пепси-кола", PEPSI, MIRINDA, SEVENUP);
-        VendingMachine automat2 = new VendingMachine("Кока-кола", COCA_COLA, FANTA, SPRITE);
 
+        logger.info("Программа вызывает метод меню");
+        automat1.menu();
 
-        logger.warning("Запустили программу");
-        logger.info("Запустили программу");
-        logger.severe("Запустили программу");
-        System.out.println("Внесите сумму");
-        int balance = scanner.nextInt();                            //Пополняем баланс
-        System.out.println("Ваш баланс: " + balance + " рублей");
+        while (scanner.hasNext()) {
+            String input = scanner.nextLine();
+            logger.info("Пользователь вводит строковое значение команды");
+            switch (input) {
+                case "add":
+                    logger.info("Пользователь вносит деньги");
+                    VendingMachine.getBalance(scanner.nextInt());
+                    System.out.println("Ваш баланс: " + balance);
+                    break;
 
+                case "go":
+                    logger.info("Пользователь вводит номер напитка");
+                    int value = scanner.nextInt();
+                    VendingMachine.getDrink(value);
+                    System.out.println("Ваш баланс: " + balance);
+                    break;
 
-        automat1.menu();                                             //Вызов метода меню
+                case "exit":
+                    logger.info("Пользователь выходит из программы");
+                    System.out.println("Ваша здача составляет: " + balance);
+                    System.out.println("Спасибо за покупку!");
+                    return;
 
-        System.out.println("Выберете номер напитка:");
-        int userChoice = scanner.nextInt();
-
-        switch (userChoice) {
-            case 0:
-                if (balance < Drink.PEPSI.getCost() || balance == 0) {
-                    System.out.println("Недостаточно средств");
-                } else {
-                    System.out.println("Возьмите ваш напиток");
-                }
-                break;
-            case 1:
-                if (balance < Drink.FANTA.getCost() || balance == 0) {
-                    System.out.println("Недостаточно средств");
-                } else {
-                    System.out.println("Возьмите ваш напиток");
-                }
-                break;
-            case 2:
-                if (balance < Drink.SPRITE.getCost() || balance == 0) {
-                    System.out.println("Недостаточно средств");
-                } else {
-                    System.out.println("Возьмите ваш напиток");
-                }
-                break;
-            default:
-
-                System.out.println("Несущетвующий номер напитка");
-
-
+                default:
+                    System.out.println("Несуществующая команда");
+                    break;
+            }
+            scanner.nextLine();
         }
 
-
     }
-
-
 }
 
