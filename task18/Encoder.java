@@ -25,7 +25,7 @@ public class Encoder {
     }
 
 
-    public static void encode(String filename, String encoding) {
+    private static void encode(String filename, String encoding) {
         String result = "";
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(filename), encoding))) {
             String line = null;

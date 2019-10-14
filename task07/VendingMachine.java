@@ -18,7 +18,7 @@ public class VendingMachine {
 
     }
 
-    public int getDrink(int choice) {
+    public int getDrink(int choice) throws NotEnoughMoneyException {
         switch (choice) {
             case 0:
                 if (balance > Drink.PEPSI.getCost() && balance != 0) {
@@ -27,7 +27,8 @@ public class VendingMachine {
                     balance -= Drink.PEPSI.getCost();
                     break;
                 } else {
-                    System.out.println("Недостаточно средств!");
+                    throw new NotEnoughMoneyException();
+
                 }
             case 1:
                 if (balance > Drink.MIRINDA.getCost() && balance != 0) {
@@ -35,7 +36,7 @@ public class VendingMachine {
                     balance -= Drink.MIRINDA.getCost();
                     break;
                 } else {
-                    System.out.println("Недостаточно средств!");
+                    throw new NotEnoughMoneyException();
                 }
             case 2:
                 if (balance > Drink.SEVENUP.getCost() && balance != 0) {
@@ -43,9 +44,9 @@ public class VendingMachine {
                     balance -= Drink.SEVENUP.getCost();
                     break;
                 } else {
-                    System.out.println("Недостаточно средств!");
+                    throw new NotEnoughMoneyException();
                 }
-                break;
+
         }
         return choice;
     }

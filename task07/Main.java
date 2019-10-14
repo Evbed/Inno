@@ -32,13 +32,17 @@ public class Main {
                 case "go":
                     logger.info("Пользователь вводит номер напитка");
                     int value = scanner.nextInt();
-                    automat1.getDrink(value);
+                    try {
+                        automat1.getDrink(value);
+                    } catch (NotEnoughMoneyException e) {
+                        System.out.println("Недостаточно средств!");
+                    }
                     System.out.println("Ваш баланс: " + automat1.getBalance());
                     break;
 
                 case "exit":
                     logger.info("Пользователь выходит из программы");
-                    System.out.println("Ваша здача составляет: " + automat1.getBalance());
+                    System.out.println("Ваша cдача составляет: " + automat1.getBalance());
                     System.out.println("Спасибо за покупку!");
                     return;
 
