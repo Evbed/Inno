@@ -4,7 +4,7 @@ import java.io.*;
 
 public class Encoder {
     public static void main(String[] args) throws IOException {
-        String str = "Good news everyone!";
+        String str = "Good news everyone! \nAnd have nice day \nHello World!";
 
         saveToFile("koi8.txt", str, "koi8");
         encode("koi8.txt", "UTF-8");
@@ -24,15 +24,14 @@ public class Encoder {
         }
     }
 
-
     private static void encode(String filename, String encoding) {
         String result = "";
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(filename), encoding))) {
             String line = null;
             while ((line = reader.readLine()) != null) {
-                result += line;
-                saveToFile("newFile.txt", result, "UTF-8" );
+                result += line + "\n";
             }
+            saveToFile("newFile.txt", result, "UTF-8");
 
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();

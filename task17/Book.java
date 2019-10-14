@@ -1,32 +1,16 @@
 package task17;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
 
-public class Book {
+import java.io.Serializable;
 
+public class Book implements Serializable {
+    final static long serialVersionUID = 1l;
 
-    Scanner scanner = new Scanner(System.in);
     private String title;
     private String author;
     private int yearOfPublishing;
     private int amountOfPages;
 
-    List<Book> list = new ArrayList<>() ;
-
-/*   public void listing (Book book){
-       Book book1 = new Book(getTitle(), getAuthor(), getYearOfPublishing(), getAmountOfPages());
-       list.add(book1);
-   }*/
-
-   /* Book(String title, String author, int yearOfPublishing, int amountOfPages){
-        this.title = title;
-        this.author = author;
-        this.yearOfPublishing = yearOfPublishing;
-        this.amountOfPages = amountOfPages;
-    }
-*/
     public String getTitle() {
         return title;
     }
@@ -61,6 +45,6 @@ public class Book {
 
     @Override
     public String toString() {
-        return String.format("[title=%s, author=%s, yearOfPublishing=%d, amountOfPages]", title, author, yearOfPublishing, amountOfPages);
+        return String.format("[Название = %s, Автор = %s, Год издания = %d, Количество страниц = %d]", title, author, yearOfPublishing, amountOfPages);
     }
 }
