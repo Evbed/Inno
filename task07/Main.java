@@ -5,8 +5,6 @@ import java.util.Scanner;
 import java.util.logging.*;
 
 import static task07.Drink.*;
-import static task07.VendingMachine.balance;
-import static task07.VendingMachine.getBalance;
 
 
 public class Main {
@@ -27,20 +25,20 @@ public class Main {
             switch (input) {
                 case "add":
                     logger.info("Пользователь вносит деньги");
-                    VendingMachine.getBalance(scanner.nextInt());
-                    System.out.println("Ваш баланс: " + balance);
+                    automat1.addCash(scanner.nextInt());
+                    System.out.println("Ваш баланс: " + automat1.getBalance());
                     break;
 
                 case "go":
                     logger.info("Пользователь вводит номер напитка");
                     int value = scanner.nextInt();
-                    VendingMachine.getDrink(value);
-                    System.out.println("Ваш баланс: " + balance);
+                    automat1.getDrink(value);
+                    System.out.println("Ваш баланс: " + automat1.getBalance());
                     break;
 
                 case "exit":
                     logger.info("Пользователь выходит из программы");
-                    System.out.println("Ваша здача составляет: " + balance);
+                    System.out.println("Ваша здача составляет: " + automat1.getBalance());
                     System.out.println("Спасибо за покупку!");
                     return;
 

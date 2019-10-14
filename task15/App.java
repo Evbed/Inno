@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.*;
 
-import static javax.print.attribute.standard.MediaSizeName.C;
+
 
 public class App {
     public static void main(String[] args) throws IOException {

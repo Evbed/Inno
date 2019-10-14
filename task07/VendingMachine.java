@@ -5,22 +5,26 @@ public class VendingMachine {
 
     private String name;
     private Drink[] drinks;
-    static int balance = 0;
+    private int balance = 0;
 
-    public static int getBalance(int cash) {
+    public int getBalance() {
+        return balance;
+    }
+
+    public int addCash(int cash) {
         System.out.println("Внесите купюры");
         balance += cash;
         return balance;
 
     }
 
-    public static int getDrink(int choice) {
+    public int getDrink(int choice) {
         switch (choice) {
             case 0:
                 if (balance > Drink.PEPSI.getCost() && balance != 0) {
 
                     System.out.println("Возьмите ваш напитоk");
-                    getBalance(-(Drink.PEPSI.getCost()));
+                    balance -= Drink.PEPSI.getCost();
                     break;
                 } else {
                     System.out.println("Недостаточно средств!");
@@ -28,7 +32,7 @@ public class VendingMachine {
             case 1:
                 if (balance > Drink.MIRINDA.getCost() && balance != 0) {
                     System.out.println("Возьмите ваш напитоk");
-                    getBalance(-(Drink.MIRINDA.getCost()));
+                    balance -= Drink.MIRINDA.getCost();
                     break;
                 } else {
                     System.out.println("Недостаточно средств!");
@@ -36,7 +40,7 @@ public class VendingMachine {
             case 2:
                 if (balance > Drink.SEVENUP.getCost() && balance != 0) {
                     System.out.println("Возьмите ваш напитоk");
-                    getBalance(-(Drink.SEVENUP.getCost()));
+                    balance -= Drink.SEVENUP.getCost();
                     break;
                 } else {
                     System.out.println("Недостаточно средств!");
