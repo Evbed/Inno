@@ -1,6 +1,7 @@
 package task17;
 
 import java.io.*;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -106,26 +107,26 @@ public class Library {
     }
 */
     public static Book[] loadBooks() {
-        Book[] books = null;
-        try (
-                FileInputStream fis = new FileInputStream(filename);
-                ObjectInputStream ois = new ObjectInputStream(fis)
-        ) {
-            books = (Book[]) ois.readObject();
+            Book[] books = null;
+            try (
+                    FileInputStream fis = new FileInputStream(filename);
+                    ObjectInputStream ois = new ObjectInputStream(fis)
+            ) {
+                books = (Book[]) ois.readObject();
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            System.out.println("Загружаем книги");
+            for (Book book : books) {
+                System.out.println(book.toString());
+            }
+            return books;
         }
-        System.out.println("Загружаем книги");
-        for (Book book : books) {
-            System.out.println(book.toString());
-        }
-        return books;
-    }
 
     private static void menu() {
         System.out.println("Выберите пункт меню: \n********************");
