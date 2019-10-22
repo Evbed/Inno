@@ -2,19 +2,18 @@ package task17;
 
 import java.io.*;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Library {
-    static String filename = "Books.bin";
+    private static String filename = "Books.bin";
+    private static ArrayList<Book> list = new ArrayList<>();
 
-
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NotFoundCommandException {
         Scanner scanner = new Scanner(System.in);
-        ArrayList<Book> list = loadBooks();
+        list = loadBooks();
 
-        Book book1 = new Book();
+       /* Book book1 = new Book();
         book1.setTitle("Пресутпление и наказание");
         book1.setAuthor("Ф.М. Достоевский");
         book1.setYearOfPublishing(1886);
@@ -33,45 +32,33 @@ public class Library {
         book3.setAuthor("А.С. Грибоедов");
         book3.setYearOfPublishing(1831);
         book3.setAmountOfPages(98);
-        list.add(book3);
+        list.add(book3);*/      //для добавления книг без пользования scanner
 
-
-   //     menu();
-        saveBooks(list);
-
-
+        menu();
+        control(scanner);
     }
 
- /*   private static void control(Scanner scanner) {
+    private static void control(Scanner scanner) throws NotFoundCommandException {
         while (scanner.hasNext()) {
             int key = scanner.nextInt();
             switch (key) {
-
                 case 1:
                     addBook();
-                    saveBooks();
-
+                    saveBooks(list);
                     break;
                 case 2:
                     loadBooks();
-
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
                 default:
-                    break;
+                    throw new NotFoundCommandException("Несуществующая команда!");
             }
         }
-    }*/
+    }
 
-    public static void saveBooks(ArrayList<Book> books) {
+    private static void saveBooks(ArrayList<Book> books) {
         System.out.println("Сохраняем книги...");
         for (Book book : books) {
             System.out.println(book.toString());
         }
-
         try (
                 FileOutputStream fos = new FileOutputStream(filename);
                 ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -84,29 +71,26 @@ public class Library {
         }
     }
 
+    private static ArrayList<Book> addBook() {
+        Scanner scanner = new Scanner(System.in);
+        Book book = new Book();
 
-    /*  public static Object addBook() {
-          Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите название книги:");
+        book.setTitle(scanner.nextLine());
+        System.out.println("Введите Автора книги:");
+        book.setAuthor(scanner.nextLine());
+        System.out.println("Введите год издательства:");
+        book.setYearOfPublishing(scanner.nextInt());
+        System.out.println("Введите количество страниц:");
+        book.setAmountOfPages(scanner.nextInt());
+        list.add(book);
 
-          Book book = new Book();
-          System.out.println("Введите название книги:");
-          book.setTitle(scanner.nextLine());
-          System.out.println("Введите Автора книги:");
-          book.setAuthor(scanner.nextLine());
-          System.out.println("Введите год издательства:");
-          book.setYearOfPublishing(scanner.nextInt());
-          System.out.println("Введите количество страниц:");
-          book.setAmountOfPages(scanner.nextInt());
-          list.add(new Book());
+        return list;
+    }
 
-          return Library.list.add(book);
-
-
-      }
-  */
-    public static ArrayList<Book> loadBooks() {
+    private static ArrayList<Book> loadBooks() {
         if (!Files.exists(new File(filename).toPath())) {
-        return new ArrayList<>();
+            return new ArrayList<>();
         }
         ArrayList<Book> books = null;
         try (
@@ -114,7 +98,6 @@ public class Library {
                 ObjectInputStream ois = new ObjectInputStream(fis)
         ) {
             books = (ArrayList<Book>) ois.readObject();
-
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -136,12 +119,8 @@ public class Library {
     private static void menu() {
         System.out.println("Выберите пункт меню: \n********************");
         System.out.println("1 - Добавить книгу");
-        System.out.println("2 -    Список книг");
-        System.out.println("3 -  Удалить книгу");
-        System.out.println("4 -    Найти книгу \n********************");
+        System.out.println("2 -    Список книг \n********************");
     }
-
-
 }
 
 
