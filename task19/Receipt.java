@@ -11,7 +11,7 @@ public class Receipt {
         System.out.printf("%12s %11s %8s %10s", "Наименование", "Цена", "Кол-во", "Стоимость" + "\n");
         System.out.println("===========================================");
         try (
-                Scanner scanner = new Scanner(new File("products2.txt"));
+                Scanner scanner = new Scanner(new File("products.txt"));
         ) {
             scanner.useLocale(Locale.US);
             scanner.useDelimiter("\n");

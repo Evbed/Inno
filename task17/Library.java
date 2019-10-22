@@ -2,6 +2,7 @@ package task17;
 
 import java.io.*;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -11,7 +12,7 @@ public class Library {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        ArrayList<Object> list = new ArrayList<>();
+        ArrayList<Book> list = loadBooks();
 
         Book book1 = new Book();
         book1.setTitle("Пресутпление и наказание");
@@ -35,11 +36,8 @@ public class Library {
         list.add(book3);
 
 
-        menu();
-        saveBooks(book1, book2, book3);
-        loadBooks();
-
-
+   //     menu();
+        saveBooks(list);
 
 
     }
@@ -68,7 +66,7 @@ public class Library {
         }
     }*/
 
-    public static void saveBooks(Book... books) {
+    public static void saveBooks(ArrayList<Book> books) {
         System.out.println("Сохраняем книги...");
         for (Book book : books) {
             System.out.println(book.toString());
@@ -87,46 +85,53 @@ public class Library {
     }
 
 
-  /*  public static Object addBook() {
-        Scanner scanner = new Scanner(System.in);
+    /*  public static Object addBook() {
+          Scanner scanner = new Scanner(System.in);
 
-        Book book = new Book();
-        System.out.println("Введите название книги:");
-        book.setTitle(scanner.nextLine());
-        System.out.println("Введите Автора книги:");
-        book.setAuthor(scanner.nextLine());
-        System.out.println("Введите год издательства:");
-        book.setYearOfPublishing(scanner.nextInt());
-        System.out.println("Введите количество страниц:");
-        book.setAmountOfPages(scanner.nextInt());
-        list.add(new Book());
+          Book book = new Book();
+          System.out.println("Введите название книги:");
+          book.setTitle(scanner.nextLine());
+          System.out.println("Введите Автора книги:");
+          book.setAuthor(scanner.nextLine());
+          System.out.println("Введите год издательства:");
+          book.setYearOfPublishing(scanner.nextInt());
+          System.out.println("Введите количество страниц:");
+          book.setAmountOfPages(scanner.nextInt());
+          list.add(new Book());
 
-        return Library.list.add(book);
+          return Library.list.add(book);
 
 
-    }
-*/
-    public static Book[] loadBooks() {
-            Book[] books = null;
-            try (
-                    FileInputStream fis = new FileInputStream(filename);
-                    ObjectInputStream ois = new ObjectInputStream(fis)
-            ) {
-                books = (Book[]) ois.readObject();
+      }
+  */
+    public static ArrayList<Book> loadBooks() {
+        if (!Files.exists(new File(filename).toPath())) {
+        return new ArrayList<>();
+        }
+        ArrayList<Book> books = null;
+        try (
+                FileInputStream fis = new FileInputStream(filename);
+                ObjectInputStream ois = new ObjectInputStream(fis)
+        ) {
+            books = (ArrayList<Book>) ois.readObject();
 
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            System.out.println("Загружаем книги");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Загружаем книги");
+        if (books == null) {
+            return new ArrayList<>();
+        } else {
             for (Book book : books) {
                 System.out.println(book.toString());
             }
             return books;
         }
+    }
 
     private static void menu() {
         System.out.println("Выберите пункт меню: \n********************");
