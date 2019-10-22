@@ -34,7 +34,8 @@ public class Main {
                     int value = scanner.nextInt();
                     try {
                         automat1.getDrink(value);
-                    } catch (NotEnoughMoneyException e) {
+                        System.out.println("Возьмите ваш напитоk");
+                    } catch (NotEnoughMoneyException | WrongCommandException e) {
                         System.out.println("Недостаточно средств!");
                     }
                     System.out.println("Ваш баланс: " + automat1.getBalance());
