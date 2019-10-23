@@ -6,12 +6,12 @@ public class App {
     public static void main(String[] args) {
 
         ArrayList<Person> people = new ArrayList<>();
-        people.add(new Person("Tom", 10));
-        people.add(new Person("Nick", 20));
-        people.add(new Person("Tom", 30));
-        people.add(new Person("Bill", 45));
-        people.add(new Person("Bill", 47));
-        people.add(new Person("Bill", 46));
+        people.add(new Person("Тимур", 10));
+        people.add(new Person("Николай", 20));
+        people.add(new Person("Тимур", 30));
+        people.add(new Person("Борис", 45));
+        people.add(new Person("Борис", 47));
+        people.add(new Person("Борис", 46));
 
         Collections.sort(people, new PersonSuperComparator());
         System.out.println("Сортировка по имени:");
