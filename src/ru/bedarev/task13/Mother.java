@@ -1,4 +1,4 @@
-package src.ru.bedarev.task13;
+package ru.bedarev.task13;
 
 import java.util.Scanner;
 

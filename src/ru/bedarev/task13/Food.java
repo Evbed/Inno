@@ -1,4 +1,4 @@
-package src.ru.bedarev.task13;
+package ru.bedarev.task13;
 
 public enum Food {
     COOKIE("Печенье"), CANDY("Конфета"), SOUP("Суп"), CARROT("Морковь");
