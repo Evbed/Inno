@@ -1,4 +1,4 @@
-package src.ru.bedarev.task21_2;
+package ru.bedarev.task21_2;
 
 public class MassiveReverse {
     public static void main(String[] args) {

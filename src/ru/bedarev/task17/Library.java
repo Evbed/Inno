@@ -1,4 +1,4 @@
-package src.ru.bedarev.task17;
+package ru.bedarev.task17;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -11,29 +11,6 @@ public class Library {
 
     public static void main(String[] args) throws NotFoundCommandException {
         Scanner scanner = new Scanner(System.in);
-        list = loadBooks();
-
-       /* Book book1 = new Book();
-        book1.setTitle("Пресутпление и наказание");
-        book1.setAuthor("Ф.М. Достоевский");
-        book1.setYearOfPublishing(1886);
-        book1.setAmountOfPages(574);
-        list.add(book1);
-
-        Book book2 = new Book();
-        book2.setTitle("Война и мир");
-        book2.setAuthor("Л.Н. Толстой");
-        book2.setYearOfPublishing(1873);
-        book2.setAmountOfPages(1225);
-        list.add(book2);
-
-        Book book3 = new Book();
-        book3.setTitle("Горе от ума");
-        book3.setAuthor("А.С. Грибоедов");
-        book3.setYearOfPublishing(1831);
-        book3.setAmountOfPages(98);
-        list.add(book3);*/      //для добавления книг без пользования scanner
-
         menu();
         control(scanner);
     }
@@ -44,10 +21,19 @@ public class Library {
             switch (key) {
                 case 1:
                     addBook();
+                    break;
+
+                case 2:
+                    System.out.println("Загружаем книги...");
+                    for (Book book : list) {
+                        System.out.println(book);
+                    }
+
+                case 3:
+                    System.out.println("Сохраняем книги...");
                     saveBooks(list);
                     break;
-                case 2:
-                    loadBooks();
+
                 default:
                     throw new NotFoundCommandException("Несуществующая команда!");
             }
@@ -55,7 +41,6 @@ public class Library {
     }
 
     private static void saveBooks(ArrayList<Book> books) {
-        System.out.println("Сохраняем книги...");
         for (Book book : books) {
             System.out.println(book.toString());
         }
@@ -88,7 +73,36 @@ public class Library {
         return list;
     }
 
-    private static ArrayList<Book> loadBooks() {
+    private static void menu() {
+        System.out.println("Выберите пункт меню: \n********************");
+        System.out.println("1 -    Добавить книгу");
+        System.out.println("2 -       Список книг");
+        System.out.println("3 - Сохранить и выйти\n********************");
+    }
+    // list = loadBooks();
+
+       /* Book book1 = new Book();
+        book1.setTitle("Пресутпление и наказание");
+        book1.setAuthor("Ф.М. Достоевский");
+        book1.setYearOfPublishing(1886);
+        book1.setAmountOfPages(574);
+        list.add(book1);
+
+        Book book2 = new Book();
+        book2.setTitle("Война и мир");
+        book2.setAuthor("Л.Н. Толстой");
+        book2.setYearOfPublishing(1873);
+        book2.setAmountOfPages(1225);
+        list.add(book2);
+
+        Book book3 = new Book();
+        book3.setTitle("Горе от ума");
+        book3.setAuthor("А.С. Грибоедов");
+        book3.setYearOfPublishing(1831);
+        book3.setAmountOfPages(98);
+        list.add(book3);*/      //для добавления книг без пользования scanner
+
+     /* private static ArrayList<Book> loadBooks() {
         if (!Files.exists(new File(filename).toPath())) {
             return new ArrayList<>();
         }
@@ -114,13 +128,7 @@ public class Library {
             }
             return books;
         }
-    }
-
-    private static void menu() {
-        System.out.println("Выберите пункт меню: \n********************");
-        System.out.println("1 - Добавить книгу");
-        System.out.println("2 -    Список книг \n********************");
-    }
+    }*/
 }
 
 

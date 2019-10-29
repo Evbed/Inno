@@ -1,4 +1,4 @@
-package src.ru.bedarev.task19;
+package ru.bedarev.task19;
 
 import java.io.File;
 import java.io.FileNotFoundException;

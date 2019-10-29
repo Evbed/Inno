@@ -1,4 +1,4 @@
-package src.ru.bedarev.task07;
+package ru.bedarev.task07;
 
 public class WrongCommandException extends Exception {
 

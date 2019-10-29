@@ -1,4 +1,4 @@
-package src.ru.bedarev.task20;
+package ru.bedarev.task20;
 
 public class Weather {
     float apiVersion;

@@ -1,4 +1,4 @@
-package src.ru.bedarev.task03;
+package ru.bedarev.task03;
 
 import java.math.BigDecimal;
 import java.util.Scanner;

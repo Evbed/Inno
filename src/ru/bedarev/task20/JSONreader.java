@@ -1,4 +1,4 @@
-package src.ru.bedarev.task20;
+package ru.bedarev.task20;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -13,9 +13,8 @@ import java.net.URL;
 
 public class JSONreader {
     public static void main(String[] args) {
-        Weather weather = new Weather();
+        Weather weather;
         ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
         objectMapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
         try {
             weather = objectMapper.readValue(new URL("https://api.oceandrivers.com/static/resources.json"), Weather.class);

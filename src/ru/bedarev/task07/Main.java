@@ -1,10 +1,10 @@
-package src.ru.bedarev.task07;
+package ru.bedarev.task07;
 
 
 import java.util.Scanner;
 import java.util.logging.*;
 
-import static src.ru.bedarev.task07.Drink.*;
+import static ru.bedarev.task07.Drink.*;
 
 
 public class Main {
@@ -17,7 +17,10 @@ public class Main {
         VendingMachine automat1 = new VendingMachine("Пепси-кола", PEPSI, MIRINDA, SEVENUP);
 
         logger.info("Программа вызывает метод меню");
-        automat1.menu();
+        System.out.println("Меню:");
+        menu();
+        control();
+
 
         while (scanner.hasNext()) {
             String input = scanner.nextLine();
@@ -25,6 +28,7 @@ public class Main {
             switch (input) {
                 case "add":
                     logger.info("Пользователь вносит деньги");
+                    System.out.println("Внесите купюры");
                     automat1.addCash(scanner.nextInt());
                     System.out.println("Ваш баланс: " + automat1.getBalance());
                     break;
@@ -54,7 +58,22 @@ public class Main {
             }
             scanner.nextLine();
         }
+    }
 
+    private static void control() {
+
+        System.out.println("******************************");
+        System.out.println("add  - Добавить купюры");
+        System.out.println("go   - Перейти к выбору напитка");
+        System.out.println("exit - Закончить покупку");
+    }
+
+    public static void menu() {
+        for (int i = 0; i < VendingMachine.drinks.length; i++) {
+            System.out.println(i + " - " + VendingMachine.drinks[i].getTitle() + " - " + VendingMachine.drinks[i].getCost() + " рублей");
+        }
     }
 }
+
+
 

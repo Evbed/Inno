@@ -1,4 +1,4 @@
-package src.ru.bedarev.task11;
+package ru.bedarev.task11;
 
 import java.util.Scanner;
 import java.util.regex.Matcher;

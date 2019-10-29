@@ -1,4 +1,4 @@
-package src.ru.bedarev.task02;
+package ru.bedarev.task02;
 
 public class Petrol {
     public static void main(String[] args) {

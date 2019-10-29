@@ -1,4 +1,4 @@
-package src.ru.bedarev.task21_1;
+package ru.bedarev.task21_1;
 
 public class MassiveToLeft {
     public static void main(String[] args) {
@@ -16,9 +16,10 @@ public class MassiveToLeft {
 
                 arr[i][j] = arr[i][j + 1];
             }
+            arr[0][arr[0].length - 1] = 0;
+            arr[1][arr[1].length - 1] = 0;
         }
-        arr[0][arr[0].length - 1] = 0;      //костыль?
-        arr[1][arr[1].length - 1] = 0;
+
     }
 
     private static void show(int[][] arr) {     //метод вывода на экран итога сортировки

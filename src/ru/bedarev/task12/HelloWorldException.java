@@ -1,4 +1,4 @@
-package src.ru.bedarev.task12;
+package ru.bedarev.task12;
 
 public class HelloWorldException {
 

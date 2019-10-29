@@ -1,4 +1,4 @@
-package src.ru.bedarev.task06_01;
+package ru.bedarev.task06_01;
 
 public class Sedan extends Car {
 

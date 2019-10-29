@@ -1,4 +1,4 @@
-package src.ru.bedarev.task17;
+package ru.bedarev.task17;
 
 public class NotFoundCommandException extends Exception {
     public NotFoundCommandException(String message) {

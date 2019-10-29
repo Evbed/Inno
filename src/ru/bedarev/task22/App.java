@@ -1,4 +1,4 @@
-package src.ru.bedarev.task22;
+package ru.bedarev.task22;
 
 import java.util.*;
 

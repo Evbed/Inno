@@ -1,4 +1,4 @@
-package src.ru.bedarev.task15;
+package ru.bedarev.task15;
 
 
 import java.io.File;

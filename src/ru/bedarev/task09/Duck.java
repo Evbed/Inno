@@ -1,4 +1,4 @@
-package src.ru.bedarev.task09;
+package ru.bedarev.task09;
 
 public class Duck extends Animal implements Run, Swim, Fly {
     @Override

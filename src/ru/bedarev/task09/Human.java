@@ -1,4 +1,4 @@
-package src.ru.bedarev.task09;
+package ru.bedarev.task09;
 
 public abstract class Human implements Runnable, Swimmable {
 

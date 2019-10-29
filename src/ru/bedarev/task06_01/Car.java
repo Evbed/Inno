@@ -1,4 +1,4 @@
-package src.ru.bedarev.task06_01;
+package ru.bedarev.task06_01;
 
 public abstract class Car implements Vehicle, Driveable {
 

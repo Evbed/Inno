@@ -1,23 +1,11 @@
-package src.ru.bedarev.task23;
+package ru.bedarev.task23;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class MyBasket implements Basket {
-    private static List<String> list = new ArrayList<>();
-
-    public static void main(String[] args) {
-
-        MyBasket basket = new MyBasket();
-        basket.addProduct("Шляпа", 5);
-        basket.addProduct("Шарф", 3);
-        basket.updateProductQuantity("Шарф", 2);
-        basket.removeProduct("Шляпа");
-        basket.getProducts();
-        basket.getProductQuantity("Шляпа");
-        basket.clear();
-    }
+    private List<String> list = new ArrayList<>();
 
     @Override
     public void addProduct(String product, int quantity) {
@@ -27,30 +15,43 @@ public class MyBasket implements Basket {
 
     @Override
     public void removeProduct(String product) {
-        list.remove(product);
+        Iterator<String> iterator = list.iterator();
+        while (iterator.hasNext()) {
+            String nextList = iterator.next();
+            if (nextList.equals(product)) {
+                iterator.remove();
+                break;
+            }
+        }
     }
+
 
     @Override
     public void updateProductQuantity(String product, int quantity) {
+        Iterator<String> iterator = list.iterator();
+        while (iterator.hasNext()) {
+            String nextList = iterator.next();
+            if (nextList.equals(product)) {
+                iterator.remove();
+            }
+        }
         for (int i = 0; i < quantity; i++)
             list.add(product);
     }
 
     @Override
     public void clear() {
-        for (int i = 0; i < list.size(); i++) {
-            list.removeAll(MyBasket.list);
+        while (!list.isEmpty()) {
+            list.remove(list.get(0));
         }
     }
 
     @Override
-    public void getProducts() {             //Должно быть List <String> getProducts?
+    public List<String> getProducts() {
         for (Iterator it = list.iterator(); it.hasNext(); ) {
             System.out.println(it.next().toString());
         }
-        if (list.isEmpty()) {
-            System.out.println("Корзина пуста");
-        }
+        return list;
     }
 
     @Override
@@ -61,7 +62,6 @@ public class MyBasket implements Basket {
                 count++;
             }
         }
-        System.out.println(count);      //Нужен ли вывод здесь:
         return count;
     }
 }

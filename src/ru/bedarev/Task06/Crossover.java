@@ -1,4 +1,4 @@
-package src.ru.bedarev.Task06;
+package ru.bedarev.Task06;
 
 class Crossover extends Auto {
 

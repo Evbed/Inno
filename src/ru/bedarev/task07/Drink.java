@@ -1,4 +1,4 @@
-package src.ru.bedarev.task07;
+package ru.bedarev.task07;
 
 public enum Drink {
     PEPSI("Пепси-кола", 30), FANTA("Фанта", 35), SPRITE("Спрайт", 40),

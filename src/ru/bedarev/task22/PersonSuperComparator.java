@@ -1,4 +1,5 @@
-package src.ru.bedarev.task22;
+package ru.bedarev.task22;
+
 
 import java.util.Comparator;
 
@@ -20,4 +21,5 @@ class PersonAgeComparator implements Comparator<Person> {
             return 0;
     }
 }
+
 

@@ -1,4 +1,4 @@
-package src.ru.bedarev.task08;
+package ru.bedarev.task08;
 
 public class Contract {
 
