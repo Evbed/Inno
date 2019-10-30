@@ -1,4 +1,4 @@
-package ru.bedarev.Task06;
+package ru.bedarev.task06;
 
 class CarPrice {
     public static void main(String[] args) {
