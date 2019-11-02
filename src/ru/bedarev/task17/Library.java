@@ -11,6 +11,7 @@ public class Library {
 
     public static void main(String[] args) throws NotFoundCommandException {
         Scanner scanner = new Scanner(System.in);
+        list = loadBooks();
         menu();
         control(scanner);
     }
@@ -79,7 +80,7 @@ public class Library {
         System.out.println("2 -       Список книг");
         System.out.println("3 - Сохранить и выйти\n********************");
     }
-    // list = loadBooks();
+    //
 
        /* Book book1 = new Book();
         book1.setTitle("Пресутпление и наказание");
@@ -102,7 +103,7 @@ public class Library {
         book3.setAmountOfPages(98);
         list.add(book3);*/      //для добавления книг без пользования scanner
 
-     /* private static ArrayList<Book> loadBooks() {
+      private static ArrayList<Book> loadBooks() {
         if (!Files.exists(new File(filename).toPath())) {
             return new ArrayList<>();
         }
@@ -128,7 +129,7 @@ public class Library {
             }
             return books;
         }
-    }*/
+    }
 }
 
 

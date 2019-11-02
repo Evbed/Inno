@@ -15,7 +15,7 @@ public class App {
         basket.updateProductQuantity("Шлёпки", 2);
         System.out.println("Обновляем количество товара *Шлёпки*\n" + basket.getProducts() + "\n");
 
-        System.out.println("Узнаем количество товара *Шляпа*\n" + basket.getProductQuantity("Шляпа") + "\n");
+        System.out.println("Узнаем количество товара *Шлёпки*\n" + basket.getProductQuantity("Шлёпки") + "\n");
 
         basket.clear();
         System.out.println("Очистили корзину\n" + basket.getProducts());

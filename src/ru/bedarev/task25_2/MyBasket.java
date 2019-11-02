@@ -43,12 +43,6 @@ public class MyBasket implements Basket {
 
     @Override
     public int getProductQuantity(String product) {
-        int count = 0;
-        for (Map.Entry<String, Integer> pair : map.entrySet()) {
-            if (pair.getKey().equals(product)) {
-                count = pair.getValue();
-            }
-        }
-        return count;
+       return map.get(product);
     }
 }

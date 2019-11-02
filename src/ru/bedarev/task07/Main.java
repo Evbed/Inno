@@ -18,7 +18,7 @@ public class Main {
 
         logger.info("Программа вызывает метод меню");
         System.out.println("Меню:");
-        menu();
+        menu(automat1);
         control();
 
 
@@ -37,8 +37,8 @@ public class Main {
                     logger.info("Пользователь вводит номер напитка");
                     int value = scanner.nextInt();
                     try {
-                        automat1.getDrink(value);
-                        System.out.println("Возьмите ваш напитоk");
+                        Drink drink = automat1.giveOut(value);
+                        System.out.println("Возьмите ваш напитоk " + drink.getTitle());
                     } catch (NotEnoughMoneyException | WrongCommandException e) {
                         System.out.println("Недостаточно средств!");
                     }
@@ -68,9 +68,9 @@ public class Main {
         System.out.println("exit - Закончить покупку");
     }
 
-    public static void menu() {
-        for (int i = 0; i < VendingMachine.drinks.length; i++) {
-            System.out.println(i + " - " + VendingMachine.drinks[i].getTitle() + " - " + VendingMachine.drinks[i].getCost() + " рублей");
+    static void menu(VendingMachine vendingMachine) {
+        for (int i = 0; i < vendingMachine.getDrinks().length; i++) {
+            System.out.println(i + " - " + vendingMachine.getDrinks()[i].getTitle() + " - " + vendingMachine.getDrinks()[i].getCost() + " рублей");
         }
     }
 }

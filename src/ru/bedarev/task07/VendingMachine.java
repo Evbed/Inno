@@ -4,8 +4,12 @@ package ru.bedarev.task07;
 public class VendingMachine {
 
     private String name;
-    public static Drink[] drinks;
+    private Drink[] drinks;
     private int balance = 0;
+
+    public Drink[] getDrinks() {
+        return drinks;
+    }
 
     public int getBalance() {
         return balance;
@@ -17,13 +21,13 @@ public class VendingMachine {
 
     }
 
-    public int getDrink(int choice) throws NotEnoughMoneyException, WrongCommandException {
+    public Drink giveOut(int choice) throws NotEnoughMoneyException, WrongCommandException {
         switch (choice) {
             case 0:
                 if (balance > Drink.PEPSI.getCost() && balance != 0) {
-
                     balance -= Drink.PEPSI.getCost();
-                    break;
+                    return Drink.PEPSI;
+
                 } else {
                     throw new NotEnoughMoneyException();
 
@@ -31,14 +35,14 @@ public class VendingMachine {
             case 1:
                 if (balance > Drink.MIRINDA.getCost() && balance != 0) {
                     balance -= Drink.MIRINDA.getCost();
-                    break;
+                    return  Drink.MIRINDA;
                 } else {
                     throw new NotEnoughMoneyException();
                 }
             case 2:
                 if (balance > Drink.SEVENUP.getCost() && balance != 0) {
                     balance -= Drink.SEVENUP.getCost();
-                    break;
+                    return Drink.SEVENUP;
                 } else {
                     throw new NotEnoughMoneyException();
                 }
@@ -46,7 +50,7 @@ public class VendingMachine {
             default:
                 throw new WrongCommandException();
         }
-        return choice;
+
     }
 
     public VendingMachine(String name, Drink... drinks) {
