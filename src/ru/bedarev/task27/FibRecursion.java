@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class FibRecursion {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Введите длину рядя Фибоначчи");
+        System.out.println("Введите длину ряда Фибоначчи");
         int num = scanner.nextInt();
 
         for (int i = 0; i < num; i++) {
