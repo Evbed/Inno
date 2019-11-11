@@ -25,7 +25,12 @@ public class Person {
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        int result = 17;
+        result = age;
+        result = 37 * result + (lastName == null ? 0 : lastName.hashCode());
+        result = 37 * result + (sex == null ? 0 : sex.hashCode());
+        return result;
+
     }
 
     @Override
@@ -50,7 +55,6 @@ public class Person {
             return false;
         if (!sex.equals(other.sex))
             return false;
-
         return true;
     }
 }
