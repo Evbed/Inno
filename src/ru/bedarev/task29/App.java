@@ -34,7 +34,9 @@ public class App {
         for (Map.Entry<String, Person> pair : copy.entrySet()) {
             int frequency = Collections.frequency(copy.values(), pair.getValue());
             if (frequency > 1) {
+
                 removeItemFromMapByValue(map, pair.getValue());
+                map.put(pair.getKey(), pair.getValue());
             }
         }
     }
