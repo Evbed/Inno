@@ -1,22 +1,20 @@
-CREATE TABLE driver
-( /*создаем таблицу водитель*/
+CREATE TABLE driver  /*создаем таблицу водитель*/
+(
     id_driver int,
-    passport  int         NOT NULL,
+    passport  int NOT NULL,
     name      varchar(50) NOT NULL DEFAULT 'ФИО',
     CONSTRAINT driver_PK PRIMARY KEY (id_driver), /*первичный ключ - id водителя*/
     CONSTRAINT id_check CHECK ( id_driver IS NOT NULL ) /*проверка что id не null*/
 
 );
 
-ALTER TABLE driver
-    ADD CONSTRAINT fk_ot_driver FOREIGN KEY (id_driver) REFERENCES orderTaxi (driver);
-/*внешний ключ к таблице заказа такси*/
 /*______________________________________________________________________________________________________________*/
 drop table driver;
 drop table car;
 drop table autopark;
 drop table orderTaxi;
 /*______________________________________________________________________________________________________________*/
+
 CREATE TABLE car
 ( /*создаем таблицу авто*/
     vinCode int,
@@ -25,8 +23,6 @@ CREATE TABLE car
     CONSTRAINT vinCode_PK PRIMARY KEY (vinCode), /*первичный ключ - винкод авто*/
     CONSTRAINT vc_check CHECK (vinCode IS NOT NULL ) /*проверка что винкод не null*/
 );
-ALTER TABLE car
-    ADD CONSTRAINT fk_car FOREIGN KEY (vinCode) REFERENCES orderTaxi (vinCode);
 /*внешний ключ к таблице заказа такси*/
 /*______________________________________________________________________________________________________________*/
 
@@ -37,15 +33,21 @@ CREATE TABLE orderTaxi
     adress   varchar(50),
     vinCode  int NOT NULL,
     driver   int NOT NULL,
-    tel      int default 7900000000,
+    tel      int default 111111,
     date     date,
     status   varchar(25),
-    CONSTRAINT orderId_PK PRIMARY KEY (order_id) /*первичный ключ - номер заказа*/
+    CONSTRAINT orderId_PK PRIMARY KEY (order_id), /*первичный ключ - номер заказа*/
+    CONSTRAINT vc_check CHECK (vinCode IS NOT NULL ) /*проверка что винкод не null*/
 );
+
+ALTER TABLE orderTaxi
+    ADD CONSTRAINT fk_drv FOREIGN KEY (driver) REFERENCES driver (id_driver);
+ALTER TABLE orderTaxi
+    ADD CONSTRAINT fk_vin FOREIGN KEY (vinCode) REFERENCES car (vinCode);
 /*______________________________________________________________________________________________________________*/
 
-CREATE TABLE autopark
-( /*создаем таблицу автопарк*/
+CREATE TABLE autopark /*создаем таблицу автопарк*/
+( 
     park_id SERIAL,
     vinCode int,
     tel     int,
@@ -64,10 +66,10 @@ INSERT INTO driver (id_driver, passport, name) VALUES (1, 223301, 'Алексе�
 INSERT into car (vinCode, model, year) VALUES (10001, 'Subaru', 2001);
 
 INSERT INTO orderTaxi (adress, vinCode, driver, tel, date, status)
-    VALUES ('Ленина_54', 10001, 456, 456456, 'JAN-08-2019', 'выполнен');
+    VALUES ('Ленина_54', 10001, 1, 456456, 'JAN-08-2019', 'выполнен');
 
 INSERT INTO orderTaxi (adress, vinCode, driver, tel, date, status)
-    VALUES ('Кирова_101', 10001, 456, 456456, 'JAN-09-2019', 'выполнен');
+    VALUES ('Кирова_101', 10001, 1, 456456, 'JAN-09-2019', 'выполнен');
 
 INSERT INTO orderTaxi (adress, vinCode, driver, tel, date, status)
-VALUES ('Орджоникидзе_11', 10001, 456, 456456, 'JAN-10-2019', 'в процессе');
+VALUES ('Орджоникидзе_11', 10001, 1, 456456, 'JAN-10-2019', 'в процессе');
