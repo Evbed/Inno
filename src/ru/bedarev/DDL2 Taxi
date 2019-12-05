@@ -1,0 +1,73 @@
+CREATE TABLE driver
+( /*создаем таблицу водитель*/
+    id_driver int,
+    passport  int         NOT NULL,
+    name      varchar(50) NOT NULL DEFAULT 'ФИО',
+    CONSTRAINT driver_PK PRIMARY KEY (id_driver), /*первичный ключ - id водителя*/
+    CONSTRAINT id_check CHECK ( id_driver IS NOT NULL ) /*проверка что id не null*/
+
+);
+
+ALTER TABLE driver
+    ADD CONSTRAINT fk_ot_driver FOREIGN KEY (id_driver) REFERENCES orderTaxi (driver);
+/*внешний ключ к таблице заказа такси*/
+/*______________________________________________________________________________________________________________*/
+drop table driver;
+drop table car;
+drop table autopark;
+drop table orderTaxi;
+/*______________________________________________________________________________________________________________*/
+CREATE TABLE car
+( /*создаем таблицу авто*/
+    vinCode int,
+    model   varchar(25) NOT NULL,
+    year    int         NOT NULL default 0000,
+    CONSTRAINT vinCode_PK PRIMARY KEY (vinCode), /*первичный ключ - винкод авто*/
+    CONSTRAINT vc_check CHECK (vinCode IS NOT NULL ) /*проверка что винкод не null*/
+);
+ALTER TABLE car
+    ADD CONSTRAINT fk_car FOREIGN KEY (vinCode) REFERENCES orderTaxi (vinCode);
+/*внешний ключ к таблице заказа такси*/
+/*______________________________________________________________________________________________________________*/
+
+
+CREATE TABLE orderTaxi
+( /*создаем таблицу заказ такси*/
+    order_id SERIAL, /*номер заказа автоинкрементируется и уникален*/
+    adress   varchar(50),
+    vinCode  int NOT NULL,
+    driver   int NOT NULL,
+    tel      int default 7900000000,
+    date     date,
+    status   varchar(25),
+    CONSTRAINT orderId_PK PRIMARY KEY (order_id) /*первичный ключ - номер заказа*/
+);
+/*______________________________________________________________________________________________________________*/
+
+CREATE TABLE autopark
+( /*создаем таблицу автопарк*/
+    park_id SERIAL,
+    vinCode int,
+    tel     int,
+    CONSTRAINT parkId_PK PRIMARY KEY (park_id) /*первичный ключ внутренняя нумерация 0-...n*/
+);
+ALTER TABLE autopark
+    ADD CONSTRAINT fk_ap_car FOREIGN KEY (vinCode) REFERENCES car (vinCode);
+/*внешний ключ к таблице авто по винкоду*/
+/*______________________________________________________________________________________________________________*/
+
+
+INSERT INTO autopark (vinCode, tel) VALUES (10001, 600690);
+
+INSERT INTO driver (id_driver, passport, name) VALUES (1, 223301, 'Алексей');
+
+INSERT into car (vinCode, model, year) VALUES (10001, 'Subaru', 2001);
+
+INSERT INTO orderTaxi (adress, vinCode, driver, tel, date, status)
+    VALUES ('Ленина_54', 10001, 456, 456456, 'JAN-08-2019', 'выполнен');
+
+INSERT INTO orderTaxi (adress, vinCode, driver, tel, date, status)
+    VALUES ('Кирова_101', 10001, 456, 456456, 'JAN-09-2019', 'выполнен');
+
+INSERT INTO orderTaxi (adress, vinCode, driver, tel, date, status)
+VALUES ('Орджоникидзе_11', 10001, 456, 456456, 'JAN-10-2019', 'в процессе');
